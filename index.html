@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nightspin — Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage">
+
+  <div class="player" id="player">
+
+    <!-- Left: turntable -->
+    <div class="deck">
+      <div class="deck-glow"></div>
+      <div class="tonearm" id="tonearm">
+        <div class="tonearm-base"></div>
+        <div class="tonearm-arm"></div>
+        <div class="tonearm-head"></div>
+      </div>
+      <div class="platter">
+        <div class="record" id="record">
+          <div class="record-sheen"></div>
+          <div class="record-label" id="recordLabel">
+            <span id="labelInitial">S</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: controls -->
+    <div class="console">
+
+      <div class="track-meta">
+        <p class="eyebrow">Now spinning</p>
+        <h1 id="songTitle">Track title</h1>
+        <p id="songArtist">Artist name</p>
+      </div>
+
+      <div class="progress-wrap">
+        <span class="time" id="currentTime">0:00</span>
+        <div class="progress-track" id="progressTrack">
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-knob" id="progressKnob"></div>
+        </div>
+        <span class="time" id="durationTime">0:00</span>
+      </div>
+
+      <div class="transport">
+        <button class="icon-btn small" id="shuffleBtn" title="Shuffle" aria-label="Toggle shuffle">
+          <svg viewBox="0 0 24 24"><path d="M17 3h4v4M21 3l-7 7M3 7h3.5a2 2 0 0 1 1.6.8L15 17.2a2 2 0 0 0 1.6.8H21M3 17h3.5a2 2 0 0 0 1.6-.8L10 14M17 21h4v-4M21 21l-4-4"/></svg>
+        </button>
+
+        <button class="icon-btn" id="prevBtn" title="Previous" aria-label="Previous track">
+          <svg viewBox="0 0 24 24"><path d="M6 5v14M20 5 9 12l11 7V5Z"/></svg>
+        </button>
+
+        <button class="icon-btn play" id="playBtn" title="Play" aria-label="Play or pause">
+          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+        </button>
+
+        <button class="icon-btn" id="nextBtn" title="Next" aria-label="Next track">
+          <svg viewBox="0 0 24 24"><path d="M18 5v14M4 5l11 7-11 7V5Z"/></svg>
+        </button>
+
+        <button class="icon-btn small" id="repeatBtn" title="Repeat" aria-label="Toggle repeat mode">
+          <svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <span class="repeat-one" id="repeatOneBadge">1</span>
+        </button>
+      </div>
+
+      <div class="volume-row">
+        <svg class="vol-icon" id="volIcon" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4Z"/><path id="volWave1" d="M16.5 8.5a5 5 0 0 1 0 7"/><path id="volWave2" d="M19 6a9 9 0 0 1 0 12"/></svg>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="70">
+        <span class="vol-value" id="volValue">70%</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Playlist panel -->
+  <div class="playlist-panel">
+    <div class="playlist-head">
+      <p class="eyebrow">Playlist</p>
+      <span id="trackCount" class="track-count">0 tracks</span>
+    </div>
+    <ul class="playlist" id="playlist"></ul>
+  </div>
+
+</div>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
